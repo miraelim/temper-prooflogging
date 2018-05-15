@@ -1,0 +1,190 @@
+verify 0.864000ms
+getcounter: 0.563000ms
+makerootkey: 1.327000ms
+filelock: 0.072000ms
+hmac256 : 0.029000ms
+loghmac: 0.167000ms
+hmac256 : 0.021000ms
+loghmac: 0.120000ms
+hmac256 : 0.022000ms
+loghmac: 0.110000ms
+hmac256 : 0.021000ms
+loghmac: 0.116000ms
+hmac256 : 0.021000ms
+loghmac: 0.117000ms
+hmac256 : 0.023000ms
+loghmac: 0.115000ms
+hmac256 : 0.021000ms
+loghmac: 0.111000ms
+hmac256 : 0.021000ms
+loghmac: 0.115000ms
+hmac256 : 0.021000ms
+loghmac: 0.125000ms
+hmac256 : 0.023000ms
+loghmac: 0.110000ms
+hmac256 : 0.022000ms
+loghmac: 0.115000ms
+hmac256 : 0.022000ms
+loghmac: 0.114000ms
+hmac256 : 0.022000ms
+loghmac: 0.114000ms
+hmac256 : 0.022000ms
+loghmac: 0.112000ms
+hmac256 : 0.022000ms
+loghmac: 0.117000ms
+hmac256 : 0.022000ms
+loghmac: 0.115000ms
+hmac256 : 0.022000ms
+loghmac: 0.112000ms
+hmac256 : 0.021000ms
+loghmac: 0.115000ms
+hmac256 : 0.021000ms
+loghmac: 0.115000ms
+hmac256 : 0.022000ms
+loghmac: 0.122000ms
+hmac256 : 0.023000ms
+loghmac: 0.114000ms
+hmac256 : 0.022000ms
+loghmac: 0.108000ms
+hmac256 : 0.023000ms
+loghmac: 0.108000ms
+hmac256 : 0.022000ms
+loghmac: 0.116000ms
+hmac256 : 0.022000ms
+loghmac: 0.112000ms
+hmac256 : 0.021000ms
+loghmac: 0.110000ms
+hmac256 : 0.023000ms
+loghmac: 0.112000ms
+hmac256 : 0.023000ms
+loghmac: 0.125000ms
+hmac256 : 0.023000ms
+loghmac: 0.109000ms
+hmac256 : 0.023000ms
+loghmac: 0.115000ms
+hmac256 : 0.022000ms
+loghmac: 0.119000ms
+hmac256 : 0.022000ms
+loghmac: 0.116000ms
+hmac256 : 0.021000ms
+loghmac: 0.120000ms
+hmac256 : 0.023000ms
+loghmac: 0.123000ms
+hmac256 : 0.021000ms
+loghmac: 0.116000ms
+hmac256 : 0.022000ms
+loghmac: 0.129000ms
+hmac256 : 0.021000ms
+loghmac: 0.124000ms
+hmac256 : 0.022000ms
+loghmac: 0.126000ms
+hmac256 : 0.022000ms
+loghmac: 0.118000ms
+hmac256 : 0.021000ms
+loghmac: 0.124000ms
+hmac256 : 0.022000ms
+loghmac: 0.127000ms
+hmac256 : 0.023000ms
+loghmac: 0.132000ms
+hmac256 : 0.022000ms
+loghmac: 0.124000ms
+hmac256 : 0.023000ms
+loghmac: 0.133000ms
+hmac256 : 0.022000ms
+loghmac: 0.117000ms
+hmac256 : 0.023000ms
+loghmac: 0.124000ms
+hmac256 : 0.024000ms
+loghmac: 0.117000ms
+hmac256 : 0.021000ms
+loghmac: 0.114000ms
+hmac256 : 0.022000ms
+loghmac: 0.119000ms
+hmac256 : 0.022000ms
+loghmac: 0.122000ms
+hmac256 : 0.022000ms
+loghmac: 0.118000ms
+hmac256 : 0.021000ms
+loghmac: 0.118000ms
+hmac256 : 0.022000ms
+loghmac: 0.114000ms
+hmac256 : 0.021000ms
+loghmac: 0.112000ms
+hmac256 : 0.022000ms
+loghmac: 0.112000ms
+hmac256 : 0.023000ms
+loghmac: 0.118000ms
+hmac256 : 0.021000ms
+loghmac: 0.112000ms
+hmac256 : 0.022000ms
+loghmac: 0.113000ms
+hmac256 : 0.022000ms
+loghmac: 0.120000ms
+hmac256 : 0.021000ms
+loghmac: 0.119000ms
+hmac256 : 0.022000ms
+loghmac: 0.116000ms
+hmac256 : 0.024000ms
+loghmac: 0.134000ms
+hmac256 : 0.022000ms
+loghmac: 0.117000ms
+hmac256 : 0.023000ms
+loghmac: 0.117000ms
+hmac256 : 0.022000ms
+loghmac: 0.114000ms
+hmac256 : 0.022000ms
+loghmac: 0.128000ms
+hmac256 : 0.023000ms
+loghmac: 0.161000ms
+hmac256 : 0.023000ms
+loghmac: 0.222000ms
+hmac256 : 0.023000ms
+loghmac: 0.118000ms
+hmac256 : 0.021000ms
+loghmac: 0.113000ms
+hmac256 : 0.023000ms
+loghmac: 0.122000ms
+hmac256 : 0.025000ms
+loghmac: 0.117000ms
+hmac256 : 0.022000ms
+loghmac: 0.115000ms
+hmac256 : 0.023000ms
+loghmac: 0.114000ms
+hmac256 : 0.023000ms
+loghmac: 0.114000ms
+hmac256 : 0.023000ms
+loghmac: 0.109000ms
+hmac256 : 0.021000ms
+loghmac: 0.138000ms
+hmac256 : 0.023000ms
+loghmac: 0.113000ms
+hmac256 : 0.023000ms
+loghmac: 0.114000ms
+hmac256 : 0.023000ms
+loghmac: 0.113000ms
+hmac256 : 0.023000ms
+loghmac: 0.107000ms
+hmac256 : 0.023000ms
+loghmac: 0.109000ms
+hmac256 : 0.023000ms
+loghmac: 0.112000ms
+hmac256 : 0.021000ms
+loghmac: 0.113000ms
+hmac256 : 0.021000ms
+loghmac: 0.113000ms
+hmac256 : 0.023000ms
+loghmac: 0.117000ms
+hmac256 : 0.026000ms
+loghmac: 0.116000ms
+hmac256 : 0.021000ms
+loghmac: 0.111000ms
+hmac256 : 0.024000ms
+loghmac: 0.116000ms
+hmac256 : 0.021000ms
+loghmac: 0.114000ms
+hmac256 : 0.022000ms
+loghmac: 0.121000ms
+hmac256 : 0.023000ms
+loghmac: 0.113000ms
+sign 0.410000ms
+main 14.779000ms
