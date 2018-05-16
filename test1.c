@@ -16,7 +16,7 @@
 unsigned char digest[SHA256_DIGEST_LENGTH];
 const char* id = "MIRAE LIM";
 char rootkey[SHA256_DIGEST_LENGTH*2+1];
-FILE  *fd;
+FILE  *fd, *kfd;
 int fd1, fd2;
 char    temp[BUFF_SIZE];
 char	hmac_log[BUFF_SIZE];
@@ -30,6 +30,11 @@ time_t starttime=0, endtime=0;
 struct log list;
 
 void makeRootkey(){
+    kfd = fopen("key.txt", "w+");
+    if(kfd<0)
+	printf("kfd open fail");
+    else 
+	printf("kfd open success\n");
     unsigned char digest[SHA256_DIGEST_LENGTH];
 
     SHA256((unsigned char*)&id, strlen(id), (unsigned char*)&digest);   
@@ -38,6 +43,7 @@ void makeRootkey(){
     }
 
     printf("First RootKey: %s\n",rootkey);
+    fprintf(kfd, "%s\n", rootkey);
 }
 
 void get_filelock(){

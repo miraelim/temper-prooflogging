@@ -11,7 +11,7 @@ int main( )
 
     char buf [100];
 
-    fd = open( "log.txt", O_RDONLY );
+    fd = open( "key.txt", O_RDONLY );
     if( fd == -1 )
     {
 	printf("file open error\n");
