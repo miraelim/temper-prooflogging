@@ -11,12 +11,13 @@
 //#include "tss2/TPM_Types.h"
 #include <time.h>
 
-#define BUFF_SIZE 1024
+#define BUFF_SIZE 2048
 
 unsigned char digest[SHA256_DIGEST_LENGTH];
 const char* id = "MIRAE LIM";
 char rootkey[SHA256_DIGEST_LENGTH*2+1];
-FILE  *fd, *fd1, *fd2;
+FILE  *fd;
+int fd1, fd2;
 char    temp[BUFF_SIZE];
 char	hmac_log[BUFF_SIZE];
 struct log{
@@ -40,8 +41,8 @@ void makeRootkey(){
 }
 
 void get_filelock(){
-    fd1 = fopen("key.txt", "r+");
-    fd2 = fopen("log.txt", "r+");
+    fd1 = open("key.txt", "r+");
+    fd2 = open("log.txt", "r+");
     if(fd1<0)
 	printf("open fd1 fail\n");
 
@@ -55,19 +56,18 @@ void get_filelock(){
 
     else{
 	printf("open fd2 success\n");
-	fread(temp, sizeof(temp), BUFF_SIZE, fd2);
-	printf("%s",temp);
+	read(fd2, temp, 2048);
+	printf("logs: %s\n",temp);
     }
 
-    printf("test2\n");
-    if (flock((int)fd1, LOCK_SH) == -1) {
+    if (flock(fd1, LOCK_SH) == -1) {
 	printf("file1 lock failed\n");
 	exit(1);
     }
     else
 	printf("key.txt lock success\n");
 
-    if (flock((int)fd2, LOCK_SH) == -1) {
+    if (flock(fd2, LOCK_SH) == -1) {
 	printf("file2 lock failed\n");
 	exit(1);
     }
