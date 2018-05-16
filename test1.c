@@ -41,8 +41,8 @@ void makeRootkey(){
 }
 
 void get_filelock(){
-    fd1 = open("key.txt", "r+");
-    fd2 = open("log.txt", "r+");
+    fd1 = open("key.txt", O_RDWR);
+    fd2 = open("weatherdatapoint.txt", O_RDWR);
     if(fd1<0)
 	printf("open fd1 fail\n");
 
