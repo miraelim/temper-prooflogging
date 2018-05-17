@@ -14,9 +14,9 @@
 #define BUFF_SIZE 2048
 
 unsigned char digest[SHA256_DIGEST_LENGTH];
-const char* id = "MIRAE LIM";
+//const char* id = "MIRAE LIM";
 char rootkey[SHA256_DIGEST_LENGTH*2+1];
-FILE  *fd, *kfd, *kofd;
+FILE  *fd, *kfd, *kofd, *counterfd;
 int fd1, fd2;
 char    temp[BUFF_SIZE];
 char	hmac_log[BUFF_SIZE];
@@ -28,6 +28,21 @@ float gap;
 time_t starttime=0, endtime=0;
 
 struct log list;
+int counter;
+void getcounter(){
+   char temp[1024],cnt[32];
+
+    counterfd = fopen("counter.txt", "r+");
+    if(kfd<0)
+	printf("counterfd open fail");
+    else
+	printf("counterfd open success\n");
+    fscanf(counterfd, "%s %s",temp, cnt);
+    counter = strtol(cnt, NULL, 16);
+    printf("string :%s counter: %d\n",temp, counter);
+    fclose(counterfd);
+
+}
 
 void makeRootkey(){
     kfd = fopen("key.txt", "r+");
@@ -89,6 +104,8 @@ void get_filelock(){
     }
     else
 	printf("log.txt lock success\n");
+    close(fd1);
+    close(fd2);
 }
 
 void hmac_sha256(
@@ -161,9 +178,9 @@ void hmac_sha256(
 
 
 
-void log_hmac(char *loghmac){
+void log_hmac(char *loghmac, char *key){
     //    printf("temp in hmac:%s\n",temp);
-    hmac_sha256(loghmac, strlen(loghmac), "19940427", strlen("19940427"), hmac_log );
+    hmac_sha256(loghmac, strlen(loghmac), key, strlen(key), hmac_log );
     printf("log hmac : %s\n",hmac_log);
 }
 
@@ -182,13 +199,14 @@ int main(){
 
     fgets(string, 1024,fd);
     printf("%s\n",string);
+    getcounter();
     makeRootkey();
     //    printf("test1\n");
     get_filelock();
-    log_hmac(string);
-    endtime = clock();
-    gap = (float) (endtime - starttime)/(CLOCKS_PER_SEC);
-    printf("time: %f\n",gap);
-    return 0;
-}
-
+    log_hmac(string,rootkey);
+//    generate_newkey()
+	    endtime = clock();
+	    gap = (float) (endtime - starttime)/(CLOCKS_PER_SEC);
+	    printf("time: %f\n",gap);
+	    return 0;
+	    }
