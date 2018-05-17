@@ -1,0 +1,1 @@
+cp ../test/key.txt .

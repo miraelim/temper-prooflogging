@@ -67,5 +67,4 @@ exit 1
 else 
 echo "verify success"
 fi
-cp keyobject.txt key.txt
 

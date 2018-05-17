@@ -1,0 +1,66 @@
+nameAlg = 0x000b
+type = 0x0001
+contextFile = context.p_B1
+
+CreatePrimary Succeed ! Handle: 0x800000ff
+
+nameAlg = 0x000b
+type = 0x0008
+contextParentFile = context.p_B1
+ObjectAttribute: 0x00040072
+
+Create Object Succeed !
+contextParentFile = context.p_B1
+contextFile = context_load_out_B1_B8
+
+Load succ.
+LoadedHandle: 0x80000100
+
+sign success
+57 cf ad e7 47 23 9e b7 80 5b 2a e4 5e 97 07 93 55 e3 8c af 79 65 18 84 2b 05 d5 bc 30 d3 22 5b 
+verify success
+sign success
+weatherdatapoint success
+counterfd open success
+string :TPM_PT_NV_COUNTERS_MAX: counter: 0x00000008
+kfd open success
+kofd open success
+key: Ñ*NiØJí%J“®Èeœ’[ËÓB^J·FÆœH
+
+First RootKey: )œ>ı`S²
+{ "header": { "id": "ec4bf973-ea36-49f3-9aaa-69c18c9c7d03", "creation_date_time": "2018-05-14T22:33:19Z", "acquisition_provenance": { "source_name": "weather-generator", "source_creation_date_time": "2015-06-30T08:36:14" }, "user_id": 2643741, "schema_id": { "namespace": "omh", "name": "weather", "version": "1.0" } }, "body": { "effective_time_frame": { "date_time": "2015-06-30T08:36:14" }, "sunrise": { "time": "2015-06-30T03:46:57" }, "sunset": { "time": "2015-06-30T20:21:12" }, "temperature": { "value": 72.340000, "min": 66.200000, "max": 79.880000, "unit": "fahrenheit" }, "humidity": { "unit": "%", "value": 43 }, "pressure": { "unit": "hPa", "value": 1020 }, "wind": { "speed": { "value": 7.780000, "name": "Moderate breeze" }, "direction": { "value": 140, "code": "SE", "name": "SouthEast" } }, "clouds": { "name": "no" }, "visibility": { }, "weather": { "number": 800, "value": "Sky is Clear", "icon": "01d" } } }
+
+open fd1 success
+open fd2 success
+logs: log file
+{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MVÓtñHR}ôÔ?ÕWpEì‰}(üıÆ$ñ78çÖö;ÑSj&ôÛ#wI{xºÃ[WH¹€a¦İğè“¬Nc>|=©}ªà¹¶…›ohc€/~i{\ĞNÿµ?x.¿¢´D˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²b:CÏß3wsˆ*{øÇ–th+C9İ¹Z]3MH³{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõúPÆÿ¯ëÜ¡ƒ¦ÜJ›`§A­‘ûH•OçÖU­’Ø#Üı±»Wi‰CÏEVw€$³ArKpÑº–~Ï2×2
+key.txt lock success
+log.txt lock success
+fd in filelock:5
+log hmac : úPÆÿ¯ëÜ¡ƒ¦ÜJ›`§A­‘ûH•OçÖU­’Ø#Ü
+fd in log_hmac:5
+keyobject.txt unlock success
+log.txt unlock success
+time: 0.003095
+{ "header": { "id": "ec4bf973-ea36-49f3-9aaa-69c18c9c7d03", "creation_date_time": "2018-05-14T22:33:19Z", "acquisition_provenance": { "source_name": "weather-generator", "source_creation_date_time": "2015-07-01T09:24:34" }, "user_id": 2643741, "schema_id": { "namespace": "omh", "name": "weather", "version": "1.0" } }, "body": { "effective_time_frame": { "date_time": "2015-07-01T09:24:34" }, "sunrise": { "time": "2015-07-01T03:49:24" }, "sunset": { "time": "2015-07-01T20:22:15" }, "temperature": { "value": 72.340000, "min": 66.200000, "max": 79.880000, "unit": "fahrenheit" }, "humidity": { "unit": "%", "value": 43 }, "pressure": { "unit": "hPa", "value": 1020 }, "wind": { "speed": { "value": 7.780000, "name": "Moderate breeze" }, "direction": { "value": 140, "code": "SE", "name": "SouthEast" } }, "clouds": { "name": "no" }, "visibility": { }, "weather": { "number": 800, "value": "Sky is Clear", "icon": "01d" } } }
+
+open fd1 success
+open fd2 success
+logs: log file
+{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®57 cf ad e7 47 23 9e b7 80 5b 2a e4 5e 97 07 93 55 e3 8c af 79 65 18 84 2b 05 d5 bc 30 d3 22 5b 
+verify success
+sign success
+,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MVÓtñHR}ôÔ?ÕWpEì‰}(üıÆ$ñ78çÖö;ÑSj&ôÛ#wI{xºÃ[WH¹€a¦İğè“¬Nc>|=©}ªà¹¶…›ohc€/~i{\ĞNÿµ?x.¿¢´D˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²/y$Óo}83Yj"xîÿŸ˜M¢ñè)Şşú½_{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B°Ì~=JòìÈòÊšáé¾.ëĞî”‹x)³d;MV{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B˜>Z2÷ÙAD‰$Ò«FwV­Ø€kKzºßg2®,0²b:CÏß3wsˆ*{øÇ–th+C9İ¹Z]3MH³{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõ{¨H×FR´KÛ5eš¿]Ìñà!†äZå^ªJøºµ³B\Vì¬óßfe’u{cÃº/¶ÀV³Åb¼”Û[«jáƒõúPÆÿ¯ëÜ¡ƒ¦ÜJ›`§A­‘ûH•OçÖU­’Ø#Üı±»Wi‰CÏEVw€$³ArKpÑº–~Ï2×2úPÆÿ¯ëÜ¡ƒ¦ÜJ›`§A­‘ûH•OçÖU­’Ø#Ü
+key.txt lock success
+log.txt lock success
+fd in filelock:5
+log hmac : ı±»Wi‰CÏEVw€$³ArKpÑº–~Ï2×2
+fd in log_hmac:5
+keyobject.txt unlock success
+log.txt unlock success
+time: 0.004281
+9
+generate key:Ñ*NiØJí%J“®Èeœ’[ËÓB^J·FÆœH
+counter1.txt success
+key1.txt success
+keyobject:32

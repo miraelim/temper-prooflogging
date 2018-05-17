@@ -18,10 +18,11 @@ unsigned char digest[SHA256_DIGEST_LENGTH];
 //char rootkey[SHA256_DIGEST_LENGTH*2+1];
 char rootkey[BUFF_SIZE];
 char keyobject[BUFF_SIZE];
-FILE  *fd, *kfd, *kofd, *counterfd;
+FILE  *fd, *kfd, *kofd, *counterfd, *kfd1;
 int fd1, fd2;
 char    temp[BUFF_SIZE];
 char	hmac_log[BUFF_SIZE];
+char countername[BUFF_SIZE];
 struct log{
     char* log;
     char* hmac_log;
@@ -34,16 +35,16 @@ int counter;
 char tpmcounter[32];
 void hmac_sha256(const unsigned char *text, int text_len, const unsigned char *key, int key_len, void *digest);
 void getcounter(){
-    char temp[1024],cnt[32];
+    char cnt[32];
 
     counterfd = fopen("counter.txt", "r+");
     if(kfd<0)
 	printf("counterfd open fail");
     else
 	printf("counterfd open success\n");
-    fscanf(counterfd, "%s %s",temp, tpmcounter);
+    fscanf(counterfd, "%s %s",countername, tpmcounter);
     //    counter = strtol(cnt, NULL, 16);
-    printf("string :%s counter: %s\n",temp, tpmcounter);
+    printf("string :%s counter: %s\n",countername, tpmcounter);
     fclose(counterfd);
 
 }
@@ -213,26 +214,33 @@ void log_hmac(char *loghmac, char *key){
 }
 
 void generate_newkey(){
-
-
     counter = strtol(tpmcounter, NULL, 16);
     counter++;
     sprintf(tpmcounter, "%d",counter);
     printf("%s\n",tpmcounter);
-
     hmac_sha256(keyobject, strlen(keyobject),tpmcounter, strlen(tpmcounter),rootkey); 
-}
 
-void save_keyobject(){
-    kfd = fopen("key.txt", "w+");
+    printf("generate key:%s\n",rootkey);
+    counterfd = fopen("counter.txt", "w");
 
-    if(kfd<0)
+    if(kfd1<0)
+	printf("counter1.txt fail\n");
+    else
+	printf("counter1.txt success\n");
+
+
+    fprintf(counterfd, "%s %s\n",countername, tpmcounter);
+    kfd1 = fopen("key.txt", "w");
+
+    if(kfd1<0)
 	printf("key1.txt fail\n");
     else
 	printf("key1.txt success\n");
 
-    printf("keyobject:%d\n",strlen(keyobject));
-    fprintf(kfd,"%s\n",keyobject);
+    printf("keyobject:%d\n",strlen(rootkey));
+    fprintf(kfd1,"%s\n",rootkey);
+    fclose(kfd1);
+
 }
 
 int main(){
@@ -252,23 +260,23 @@ int main(){
     system("./project1.sh");
     system("./project2.sh");
 
-    while(!feof(fd)){
+    while( fgets(string, 1024,fd)!= NULL){
 
-	fgets(string, 1024,fd);
+	//	fgets(string, 1024,fd);
 	printf("%s\n",string);
 
 	get_filelock();
 	system("./project3.sh");
 
-
 	log_hmac(string,rootkey);
-	generate_newkey();
+	//	generate_newkey();
+	// save_keyobject();
 	get_fileunlock();
 	system("./project2.sh");
-	save_keyobject();
 	endtime = clock();
 	gap = (float) (endtime - starttime)/(CLOCKS_PER_SEC);
 	printf("time: %f\n",gap);
     }
+    generate_newkey();
     return 0;
 }
