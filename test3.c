@@ -15,7 +15,8 @@
 
 unsigned char digest[SHA256_DIGEST_LENGTH];
 //const char* id = "MIRAE LIM";
-char rootkey[SHA256_DIGEST_LENGTH*2+1];
+//char rootkey[SHA256_DIGEST_LENGTH*2+1];
+char rootkey[BUFF_SIZE];
 FILE  *fd, *kfd, *kofd, *counterfd;
 int fd1, fd2;
 char    temp[BUFF_SIZE];
@@ -30,14 +31,9 @@ time_t starttime=0, endtime=0;
 struct log list;
 int counter;
 char tpmcounter[32];
-void hmac_sha256(
-	        const unsigned char *text,      /* pointer to data stream        */
-	        int                 text_len,   /* length of data stream         */
-	         const unsigned char *key,       /* pointer to authentication key */
-	        int                 key_len,    /* length of authentication key  */
-	     void                *digest);
+void hmac_sha256(const unsigned char *text, int text_len, const unsigned char *key, int key_len, void *digest);
 void getcounter(){
-   char temp[1024],cnt[32];
+    char temp[1024],cnt[32];
 
     counterfd = fopen("counter.txt", "r+");
     if(kfd<0)
@@ -45,7 +41,7 @@ void getcounter(){
     else
 	printf("counterfd open success\n");
     fscanf(counterfd, "%s %s",temp, tpmcounter);
-//    counter = strtol(cnt, NULL, 16);
+    //    counter = strtol(cnt, NULL, 16);
     printf("string :%s counter: %s\n",temp, tpmcounter);
     fclose(counterfd);
 
@@ -64,25 +60,27 @@ void makeRootkey(){
     else
 	printf("kofd open success\n");
 
-//    unsigned char digest[SHA256_DIGEST_LENGTH];
+    //    unsigned char digest[SHA256_DIGEST_LENGTH];
 
     fgets(string, 1024, kfd);
     printf("key: %s\n",string);
-//    SHA256((unsigned char*)&string, strlen(string), (unsigned char*)&digest);   
-  //  for(int i =0 ; i < SHA256_DIGEST_LENGTH; i++){
-//	sprintf(&rootkey[i*2], "%02x", (unsigned int)digest[i]);
-  //  }
+    //    SHA256((unsigned char*)&string, strlen(string), (unsigned char*)&digest);   
+    //  for(int i =0 ; i < SHA256_DIGEST_LENGTH; i++){
+    //	sprintf(&rootkey[i*2], "%02x", (unsigned int)digest[i]);
+    //  }
 
-    hmac_sha256(string, strlen(string), 
+    hmac_sha256(string, strlen(string),tpmcounter, strlen(tpmcounter),rootkey); 
 
     printf("First RootKey: %s\n",rootkey);
     fprintf(kofd, "%s\n", rootkey);
-
+    fclose(kfd);
+    fclose(kofd);
 }
 
+
 void get_filelock(){
-    fd1 = open("key.txt", O_RDWR);
-    fd2 = open("weatherdatapoint.txt", O_RDWR);
+    fd1 = open("keyobject.txt", O_RDWR);
+    fd2 = open("log.txt", O_RDWR);
     if(fd1<0)
 	printf("open fd1 fail\n");
 
@@ -90,7 +88,7 @@ void get_filelock(){
 	printf("open fd1 success\n");
     }
 
-    printf("test1\n");
+    //    printf("test1\n");
     if(fd2<0)
 	printf("open fd2 fail\n");
 
@@ -113,6 +111,23 @@ void get_filelock(){
     }
     else
 	printf("log.txt lock success\n");
+    printf("fd in filelock:%d\n",fd2);
+}
+
+void get_fileunlock(){
+    if (flock(fd1, LOCK_UN) == -1) {
+	printf("keyobject unlock failed\n");
+	exit(1);
+    }
+    else
+	printf("keyobject.txt unlock success\n");
+
+    if (flock(fd2, LOCK_UN) == -1) {
+	printf("log unlock failed\n");
+	exit(1);
+    }
+    else
+	printf("log.txt unlock success\n");
     close(fd1);
     close(fd2);
 }
@@ -191,8 +206,13 @@ void log_hmac(char *loghmac, char *key){
     //    printf("temp in hmac:%s\n",temp);
     hmac_sha256(loghmac, strlen(loghmac), key, strlen(key), hmac_log );
     printf("log hmac : %s\n",hmac_log);
+    printf("fd in log_hmac:%d\n",fd2);
+    write(fd2, hmac_log ,strlen(hmac_log));
 }
 
+void generate_newkey(){
+
+}
 
 
 int main(){
@@ -212,10 +232,12 @@ int main(){
     makeRootkey();
     //    printf("test1\n");
     get_filelock();
+
     log_hmac(string,rootkey);
-//    generate_newkey()
-	    endtime = clock();
-	    gap = (float) (endtime - starttime)/(CLOCKS_PER_SEC);
-	    printf("time: %f\n",gap);
-	    return 0;
-	    }
+    ////    generate_newkey()
+    get_fileunlock();
+    endtime = clock();
+    gap = (float) (endtime - starttime)/(CLOCKS_PER_SEC);
+    printf("time: %f\n",gap);
+    return 0;
+}
