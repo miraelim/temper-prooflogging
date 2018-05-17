@@ -7,19 +7,20 @@
 int main( )
 {
 
-    int fd;
+    int fd,num;
 
-    char buf [100];
+    char buf [4048];
 
-    fd = open( "log.txt", O_RDONLY );
+    fd = open( "key.txt", O_RDONLY );
     if( fd == -1 )
     {
 	printf("file open error\n");
     }
     else
     {
-	read(fd, buf, sizeof(buf));
-	printf("%s\n", buf);
+	num =read(fd, buf, sizeof(buf));
+	printf("key: %s\n", buf);
+	printf("num: %d\n",num);
 	close(fd);
     }
 
