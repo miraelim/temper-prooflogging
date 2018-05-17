@@ -46,6 +46,7 @@ alg_hash=0x000B
 alg_primary_key=0x0001
 alg_signing_key=0x0008
 
+rm $file_output_data
 fail()
 {
 	    echo "$1 test fail, please check the environment or parameters!"
@@ -55,9 +56,6 @@ Pass()
 {
 	    echo ""$1" pass" >>test_getpubak_pass.log
 }
-
-rm  $file_output_data -rf
-
 
 tpm2_sign -c $file_signing_key_ctx -g $alg_hash -m $file_input_data -s $file_output_data
 if [ ! -e "$file_output_data" ];then    

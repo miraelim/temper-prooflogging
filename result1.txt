@@ -1,0 +1,26 @@
+nameAlg = 0x000b
+type = 0x0001
+contextFile = context.p_B1
+
+CreatePrimary Succeed ! Handle: 0x800000ff
+
+nameAlg = 0x000b
+type = 0x0008
+contextParentFile = context.p_B1
+ObjectAttribute: 0x00040072
+
+Create Object Succeed !
+contextParentFile = context.p_B1
+contextFile = context_load_out_B1_B8
+
+Load succ.
+LoadedHandle: 0x80000100
+
+sign success
+weatherdatapoint success
+counterfd open success
+string :TPM_PT_NV_COUNTERS_MAX: counter: 0x00000008
+kfd open success
+kofd open success
+key: :
+First RootKey: ·ôØà1ö©v½¡ô°ž^3ÿr&t¯ÎÞe@w]?©Ö

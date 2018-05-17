@@ -17,6 +17,7 @@ unsigned char digest[SHA256_DIGEST_LENGTH];
 //const char* id = "MIRAE LIM";
 //char rootkey[SHA256_DIGEST_LENGTH*2+1];
 char rootkey[BUFF_SIZE];
+char keyobject[BUFF_SIZE];
 FILE  *fd, *kfd, *kofd, *counterfd;
 int fd1, fd2;
 char    temp[BUFF_SIZE];
@@ -86,6 +87,7 @@ void get_filelock(){
 
     else{
 	printf("open fd1 success\n");
+	read(fd1, keyobject, 2048);
     }
 
     //    printf("test1\n");
@@ -212,8 +214,26 @@ void log_hmac(char *loghmac, char *key){
 
 void generate_newkey(){
 
+
+    counter = strtol(tpmcounter, NULL, 16);
+    counter++;
+    sprintf(tpmcounter, "%d",counter);
+    printf("%s\n",tpmcounter);
+
+    hmac_sha256(keyobject, strlen(keyobject),tpmcounter, strlen(tpmcounter),rootkey); 
 }
 
+void save_keyobject(){
+    kfd = fopen("key.txt", "w+");
+
+    if(kfd<0)
+	printf("key1.txt fail\n");
+    else
+	printf("key1.txt success\n");
+
+    printf("keyobject:%d\n",strlen(keyobject));
+    fprintf(kfd,"%s\n",keyobject);
+}
 
 int main(){
     char string[1024] ;
@@ -232,16 +252,23 @@ int main(){
     system("./project1.sh");
     system("./project2.sh");
 
-    fgets(string, 1024,fd);
-    printf("%s\n",string);
+    while(!feof(fd)){
 
-    get_filelock();
+	fgets(string, 1024,fd);
+	printf("%s\n",string);
 
-    log_hmac(string,rootkey);
-    ////    generate_newkey()
-    get_fileunlock();
-    endtime = clock();
-    gap = (float) (endtime - starttime)/(CLOCKS_PER_SEC);
-    printf("time: %f\n",gap);
+	get_filelock();
+	system("./project3.sh");
+
+
+	log_hmac(string,rootkey);
+	generate_newkey();
+	get_fileunlock();
+	system("./project2.sh");
+	save_keyobject();
+	endtime = clock();
+	gap = (float) (endtime - starttime)/(CLOCKS_PER_SEC);
+	printf("time: %f\n",gap);
+    }
     return 0;
 }
